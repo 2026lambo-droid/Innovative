@@ -7,14 +7,14 @@ import { siteConfig } from '../site.config.js'
 export function SEO({ title, description }) {
   useEffect(() => {
     const siteName = siteConfig.companyName
-    document.title = title ? `${title} | ${siteName}` : siteName
+    document.title = title ? `${title} | ${siteName}` : (siteConfig.defaultMetaTitle || siteName)
     let meta = document.querySelector('meta[name="description"]')
     if (!meta) {
       meta = document.createElement('meta')
       meta.name = 'description'
       document.head.appendChild(meta)
     }
-    if (description) meta.setAttribute('content', description)
+    meta.setAttribute('content', description || siteConfig.defaultMetaDescription || '')
   }, [title, description])
   return null
 }

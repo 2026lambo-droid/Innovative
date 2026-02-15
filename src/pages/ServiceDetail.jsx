@@ -37,7 +37,7 @@ export function ServiceDetail() {
           <div className="service-detail-body">
             <span className="service-detail-icon" aria-hidden>{service.icon}</span>
             <p>{service.description}</p>
-            <Link to="/contact" className="btn btn-primary">Get a free quote</Link>
+            <Link to="/contact" className="btn btn-primary">Request quote</Link>
           </div>
         </div>
       </section>

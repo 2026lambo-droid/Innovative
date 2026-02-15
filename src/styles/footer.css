@@ -63,28 +63,55 @@
 }
 
 .footer-links a:focus-visible,
-.footer-social a:focus-visible,
+.footer-social-icon:focus-visible,
 .footer-brand a:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+.footer-follow-label {
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-top: var(--space-16);
+  margin-bottom: var(--space-8);
 }
 
 .footer-social {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-16);
-  margin-top: var(--space-16);
+  align-items: center;
 }
 
-.footer-social a {
-  font-size: var(--text-body-sm);
-  font-weight: 500;
+.footer-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color-text-muted);
+  padding: var(--space-8);
+  border-radius: var(--radius-pill);
+  transition: color var(--transition), opacity var(--transition);
 }
 
-.footer-social a:hover {
+.footer-social-icon:hover {
   color: var(--color-text);
   text-decoration: none;
+}
+
+.footer-social-icon--disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.footer-social-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 .footer-legal {

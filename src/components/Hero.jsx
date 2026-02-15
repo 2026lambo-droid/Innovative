@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import { siteConfig } from '../site.config.js'
+import { getHeroImage } from '../utils/images.js'
 import '../styles/hero.css'
 
-export function Hero({ title, subtitle, showCta = true }) {
-  const bgImage = siteConfig.heroBackgroundImage
+export function Hero({ title, subtitle, supportLine, primaryCtaText, showCta = true }) {
+  const bgImage = getHeroImage(siteConfig)
 
   return (
     <section
       className="hero"
-      style={bgImage ? { '--hero-bg': `url(${bgImage})` } : undefined}
+      style={{ '--hero-bg': `url(${bgImage})` }}
     >
       <div className="hero-overlay" aria-hidden />
       <div className="hero-inner">
@@ -16,22 +17,25 @@ export function Hero({ title, subtitle, showCta = true }) {
         <p className="hero-subtitle">{subtitle ?? siteConfig.tagline}</p>
         {showCta && (
           <>
-            <div className="hero-trust">
-              {siteConfig.ratingDisplay && (
-                <span className="hero-chip">
-                  <span className="hero-chip-star" aria-hidden>★</span> {siteConfig.ratingDisplay}
-                </span>
-              )}
-              {siteConfig.yearEstablished && (
-                <span className="hero-chip">Since {siteConfig.yearEstablished}</span>
-              )}
-              {siteConfig.insuredLabel && (
-                <span className="hero-chip">{siteConfig.insuredLabel}</span>
-              )}
-            </div>
+            {(supportLine || siteConfig.ratingDisplay || siteConfig.yearEstablished || siteConfig.insuredLabel) && (
+              <div className="hero-trust">
+                {supportLine && <span className="hero-chip">{supportLine}</span>}
+                {!supportLine && siteConfig.ratingDisplay && (
+                  <span className="hero-chip">
+                    <span className="hero-chip-star" aria-hidden>★</span> {siteConfig.ratingDisplay}
+                  </span>
+                )}
+                {!supportLine && siteConfig.yearEstablished && (
+                  <span className="hero-chip">Since {siteConfig.yearEstablished}</span>
+                )}
+                {!supportLine && siteConfig.insuredLabel && (
+                  <span className="hero-chip">{siteConfig.insuredLabel}</span>
+                )}
+              </div>
+            )}
             <div className="hero-cta">
               <Link to="/contact" className="btn btn-primary">
-                Get a Free Quote
+                {primaryCtaText || 'Request a Security Consultation'}
               </Link>
               <a href={siteConfig.phoneHref} className="btn btn-ghost">
                 Call {siteConfig.phone}
@@ -55,7 +59,7 @@ export function Hero({ title, subtitle, showCta = true }) {
                 <span className="hero-quick-info-value">{siteConfig.businessHours}</span>
               </div>
             )}
-            <Link to="/contact" className="hero-quick-info-cta">Free estimates</Link>
+            <Link to="/contact" className="hero-quick-info-cta">Request a consultation</Link>
           </div>
         </aside>
       )}

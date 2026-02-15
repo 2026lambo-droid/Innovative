@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { SEO } from '../components/SEO.jsx'
 import { services } from '../data/services.js'
+import { siteConfig } from '../site.config.js'
+import { getServiceImage } from '../utils/images.js'
 import '../styles/services-grid.css'
 
 export function ServicesIndex() {
@@ -8,12 +10,12 @@ export function ServicesIndex() {
     <>
       <SEO
         title="Services"
-        description="Kitchen remodeling, bathroom remodeling, room additions, decks and patios, siding and roofing, and general contracting. Licensed and insured."
+        description="Security patrol services: armed and unarmed officers, mobile patrol, construction site, event, and residential/HOA security. PPO #121274. San Jose and the Bay Area."
       />
       <section className="page-hero">
         <div className="container">
           <h1>Our Services</h1>
-          <p>Quality construction and renovation for your home or business.</p>
+          <p>Professional security patrol services for your business, site, or community.</p>
         </div>
       </section>
       <section className="services-grid-section section section--alt">
@@ -21,9 +23,12 @@ export function ServicesIndex() {
           <div className="services-grid">
             {services.map((service) => (
               <article key={service.slug} className="service-card">
-                <div className="service-card-image">
-                  <span className="service-icon" aria-hidden>{service.icon}</span>
-                </div>
+                <div
+                  className="service-card-image"
+                  style={{ backgroundImage: `url(${getServiceImage(service.title, siteConfig)})` }}
+                role="img"
+                aria-label={`${service.title} – ${siteConfig.industry || 'service'} image`}
+              ></div>
                 <div className="service-card-body">
                   <h3 className="service-title">{service.title}</h3>
                   <p className="service-desc">{service.shortDesc}</p>

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { services } from '../data/services.js'
+import { siteConfig } from '../site.config.js'
+import { getServiceImage } from '../utils/images.js'
 import '../styles/services-grid.css'
 
 export function ServicesGrid() {
@@ -10,9 +12,12 @@ export function ServicesGrid() {
         <div className="services-grid">
           {services.map((service) => (
             <article key={service.slug} className="service-card">
-              <div className="service-card-image">
-                <span className="service-icon" aria-hidden>{service.icon}</span>
-              </div>
+              <div
+                className="service-card-image"
+                style={{ backgroundImage: `url(${getServiceImage(service.title, siteConfig)})` }}
+                role="img"
+                aria-label={`${service.title} – ${siteConfig.industry || 'service'} image`}
+              ></div>
               <div className="service-card-body">
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-desc">{service.shortDesc}</p>

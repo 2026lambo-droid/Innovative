@@ -1,19 +1,23 @@
 import { SEO } from '../components/SEO.jsx'
-import { galleryItems } from '../data/gallery.js'
 import { siteConfig } from '../site.config.js'
+import { getGalleryImages } from '../utils/images.js'
 import '../styles/gallery.css'
 
+const GALLERY_COUNT = 6
+
 export function Gallery() {
+  const galleryItems = getGalleryImages(siteConfig, GALLERY_COUNT)
+
   return (
     <>
       <SEO
         title="Gallery"
-        description={`Photo gallery of projects by ${siteConfig.companyName}. Kitchen remodels, bathrooms, decks, and more.`}
+        description={`Photo gallery of security patrol services and operations by ${siteConfig.companyName}. Patrol officers, vehicles, events, and more.`}
       />
       <section className="page-hero">
         <div className="container">
-          <h1>Project Gallery</h1>
-          <p>A selection of our completed work.</p>
+          <h1>Gallery</h1>
+          <p>A selection of our security patrol services and operations.</p>
         </div>
       </section>
       <section className="gallery-section section section--alt">
@@ -22,7 +26,13 @@ export function Gallery() {
             {galleryItems.map((item) => (
               <div key={item.id} className="gallery-item">
                 <div className="gallery-item-image">
-                  <img src={item.image} alt={item.title} loading="lazy" />
+                  <img
+                    src={item.url}
+                    alt={item.alt}
+                    loading="lazy"
+                    width={800}
+                    height={600}
+                  />
                 </div>
                 <div className="gallery-caption">
                   <strong>{item.title}</strong>

@@ -5,6 +5,11 @@ import { siteConfig } from '../site.config.js'
  */
 export function JsonLd() {
   const address = siteConfig.address || {}
+  const sameAs = []
+  if (siteConfig.social?.facebook) sameAs.push(siteConfig.social.facebook)
+  if (siteConfig.social?.instagram) sameAs.push(siteConfig.social.instagram)
+  if (siteConfig.social?.tiktok) sameAs.push(siteConfig.social.tiktok)
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -12,7 +17,9 @@ export function JsonLd() {
     description: siteConfig.tagline || '',
     ...(siteConfig.phone && { telephone: siteConfig.phone }),
     ...(siteConfig.email && { email: siteConfig.email }),
-    ...(address.street || address.city && {
+    ...(siteConfig.serviceArea && { areaServed: siteConfig.serviceArea }),
+    ...(sameAs.length > 0 && { sameAs }),
+    ...(address.street || address.city ? {
       address: {
         '@type': 'PostalAddress',
         ...(address.street && { streetAddress: address.street }),
@@ -20,10 +27,14 @@ export function JsonLd() {
         ...(address.state && { addressRegion: address.state }),
         ...(address.zip && { postalCode: address.zip }),
       },
-    }),
+    } : (siteConfig.addressLine && {
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: siteConfig.addressLine,
+      },
+    })),
     ...(siteConfig.businessHours && { openingHours: siteConfig.businessHours }),
     ...(siteConfig.yearEstablished != null && { foundingDate: String(siteConfig.yearEstablished) }),
-    ...(siteConfig.serviceAreaDescription && { areaServed: siteConfig.serviceAreaDescription }),
   }
 
   return (

@@ -8,12 +8,12 @@ export function Reviews() {
     <>
       <SEO
         title="Reviews"
-        description={`What our customers say about ${siteConfig.companyName}. Real reviews from homeowners in the area.`}
+        description={`What our clients say about ${siteConfig.companyName}. Real reviews from businesses and communities across the Bay Area.`}
       />
       <section className="page-hero">
         <div className="container">
           <h1>Customer Reviews</h1>
-          <p>Hear from homeowners we've worked with.</p>
+          <p>Hear from clients we&apos;ve worked with.</p>
         </div>
       </section>
       <section className="reviews-section section section--alt">
