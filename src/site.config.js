@@ -31,8 +31,9 @@ export const siteConfig = {
   ratingDisplay: '4.9',
   insuredLabel: 'PPO #121274',
   serviceAreaDescription: 'Security patrol services including armed and unarmed officers, mobile patrol, construction site security, event security, and residential/HOA patrol across San Jose and the Bay Area.',
-  defaultMetaTitle: 'Innovative Security Solutions | Security Patrol Services San Jose',
-  defaultMetaDescription: 'Security patrol services: armed & unarmed officers, mobile patrol, construction site, event, and residential/HOA security across San Jose and the Bay Area. PPO #121274.',
+  defaultMetaTitle: 'Innovative Security Solutions — Vigilantia Aeterna',
+  defaultMetaDescription: 'Professional security patrol services in San Jose & the Bay Area. Call (408) 500-5872.',
+  canonicalBaseUrl: 'https://innovativesecurityca.com',
 
   /* Industry-aware images. Local images (in public/images/) take precedence when set. */
   industry: 'security',

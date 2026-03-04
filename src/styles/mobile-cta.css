@@ -1,11 +1,14 @@
 .mobile-call-button {
   display: none;
   position: fixed;
-  bottom: var(--space-24);
   left: 50%;
   transform: translateX(-50%);
+  bottom: max(var(--space-24), env(safe-area-inset-bottom, 0px));
+  width: calc(100vw - var(--space-32));
+  max-width: 400px;
   z-index: 99;
-  padding: var(--space-16) var(--space-32);
+  padding: var(--space-12) var(--space-20);
+  padding-bottom: max(var(--space-12), env(safe-area-inset-bottom, 0px));
   min-height: 48px;
   background: var(--color-primary);
   color: #fff;
@@ -13,11 +16,13 @@
   font-size: var(--text-body-sm);
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-lg);
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: var(--space-8);
   transition: background var(--transition), box-shadow var(--transition), transform 0.15s ease;
-  max-width: calc(100vw - var(--space-32));
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .mobile-call-button:hover {
@@ -39,6 +44,17 @@
 
 .mobile-call-icon {
   font-size: 1.125rem;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mobile-call-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
@@ -54,12 +70,26 @@
 
 @media (max-width: 480px) {
   .mobile-call-button {
-    bottom: var(--space-16);
-    padding: var(--space-14) var(--space-24);
-    font-size: var(--text-body);
+    bottom: max(var(--space-16), env(safe-area-inset-bottom, 0px));
+    padding: var(--space-12) var(--space-20);
+    padding-bottom: max(var(--space-12), env(safe-area-inset-bottom, 0px));
+    font-size: 0.875rem;
+    min-height: 48px;
   }
 
   main {
     padding-bottom: 80px;
+  }
+}
+
+/* Extra narrow: ensure button stays readable and fits */
+@media (max-width: 360px) {
+  .mobile-call-button {
+    padding: var(--space-12) var(--space-16);
+    font-size: 0.8125rem;
+  }
+
+  .mobile-call-icon {
+    font-size: 1rem;
   }
 }
