@@ -38,7 +38,7 @@ function getIndustryIds(config) {
   return config?.imageIds ?? DEFAULT_IMAGE_IDS[industry] ?? DEFAULT_IMAGE_IDS.security
 }
 
-export function buildImageUrl(query, w = 800, h = 600) {
+export function buildImageUrl(query, w = 800) {
   const ids = DEFAULT_IMAGE_IDS.security
   const id = ids.gallery[0] || ids.hero
   return unsplashUrl(id, w)

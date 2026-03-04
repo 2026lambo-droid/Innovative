@@ -14,25 +14,17 @@
   text-align: center;
 }
 
-/* Dark gradient overlay for readability */
+/* Overlay disabled — show raw hero image */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: none;
   pointer-events: none;
 }
 
-/* Bottom fade into next section */
+/* Bottom fade disabled to show full hero image */
 .hero::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 120px;
-  background: linear-gradient(to top, var(--color-bg), transparent);
-  pointer-events: none;
-  z-index: 1;
+  content: none;
 }
 
 .hero-inner {
