@@ -6,6 +6,7 @@
   transform: translateX(-50%);
   z-index: 99;
   padding: var(--space-16) var(--space-32);
+  min-height: 48px;
   background: var(--color-primary);
   color: #fff;
   font-weight: 600;
@@ -15,6 +16,8 @@
   align-items: center;
   gap: var(--space-8);
   transition: background var(--transition), box-shadow var(--transition), transform 0.15s ease;
+  max-width: calc(100vw - var(--space-32));
+  box-sizing: border-box;
 }
 
 .mobile-call-button:hover {
@@ -41,5 +44,22 @@
 @media (max-width: 768px) {
   .mobile-call-button {
     display: flex;
+  }
+
+  /* Reserve space at bottom so content isn’t hidden behind fixed CTA */
+  main {
+    padding-bottom: 88px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-call-button {
+    bottom: var(--space-16);
+    padding: var(--space-14) var(--space-24);
+    font-size: var(--text-body);
+  }
+
+  main {
+    padding-bottom: 80px;
   }
 }

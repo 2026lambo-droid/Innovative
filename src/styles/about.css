@@ -50,8 +50,36 @@
 }
 
 @media (max-width: 768px) {
+  .about-content {
+    padding: var(--space-64) 0;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
     gap: var(--space-48);
+  }
+
+  .about-grid h2 {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content {
+    padding: var(--space-48) 0;
+  }
+
+  .about-grid {
+    gap: var(--space-32);
+  }
+
+  .about-grid h2 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-16);
+  }
+
+  .about-list li {
+    padding-left: var(--space-20);
+    font-size: var(--text-body-sm);
   }
 }

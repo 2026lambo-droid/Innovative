@@ -8,7 +8,7 @@
 
 .areas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: var(--space-32);
 }
 
@@ -38,4 +38,29 @@
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
+}
+
+@media (max-width: 768px) {
+  .service-areas-section {
+    padding: var(--space-64) 0;
+  }
+
+  .areas-grid {
+    gap: var(--space-24);
+  }
+}
+
+@media (max-width: 480px) {
+  .service-areas-section {
+    padding: var(--space-48) 0;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-20);
+  }
+
+  .area-card {
+    padding: var(--space-20);
+  }
 }

@@ -8,7 +8,7 @@
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: var(--space-32);
 }
 
@@ -56,4 +56,31 @@
   font-style: normal;
   font-weight: 600;
   color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .reviews-section .section-title {
+    margin-bottom: var(--space-40);
+  }
+
+  .reviews-grid {
+    gap: var(--space-24);
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-20);
+  }
+
+  .review-card {
+    padding: var(--space-20);
+  }
+
+  .review-text {
+    font-size: var(--text-body-sm);
+    padding-bottom: var(--space-16);
+    margin-bottom: var(--space-16);
+  }
 }

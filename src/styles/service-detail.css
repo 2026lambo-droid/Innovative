@@ -33,3 +33,38 @@
 .service-detail-body .btn {
   margin-top: var(--space-16);
 }
+
+@media (max-width: 768px) {
+  .service-detail-content {
+    padding: var(--space-64) 0;
+  }
+
+  .service-detail-short {
+    font-size: var(--text-body);
+  }
+}
+
+@media (max-width: 480px) {
+  .service-detail-content {
+    padding: var(--space-48) 0;
+  }
+
+  .service-detail-body {
+    padding: 0;
+  }
+
+  .service-detail-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-16);
+  }
+
+  .service-detail-body p {
+    font-size: var(--text-body-sm);
+    margin-bottom: var(--space-24);
+  }
+
+  .service-detail-body .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+}

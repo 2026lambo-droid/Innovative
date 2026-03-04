@@ -9,9 +9,11 @@
   background-image: var(--hero-bg, none);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   padding: var(--space-96) var(--space-24);
   text-align: center;
+  box-sizing: border-box;
 }
 
 /* Overlay disabled — show raw hero image */
@@ -38,9 +40,10 @@
   font-size: var(--text-hero);
   font-weight: 700;
   letter-spacing: var(--tracking-tighter);
-  line-height: 1.08;
+  line-height: 1.1;
   margin-bottom: var(--space-20);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  word-wrap: break-word;
 }
 
 .hero-subtitle {
@@ -89,6 +92,89 @@
 
 .hero-cta .btn {
   min-width: 168px;
+}
+
+/* ========== Hero: tablet ========== */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 420px;
+    padding: var(--space-64) var(--space-24);
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    margin-bottom: var(--space-16);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.9375rem, 2.5vw, 1.125rem);
+    margin-bottom: var(--space-32);
+  }
+
+  .hero-trust {
+    margin-bottom: var(--space-32);
+    gap: var(--space-8);
+  }
+
+  .hero-chip {
+    padding: var(--space-8) var(--space-16);
+    font-size: 0.6875rem;
+  }
+
+  .hero-cta {
+    gap: var(--space-12);
+  }
+
+  .hero-cta .btn {
+    min-width: 140px;
+  }
+}
+
+/* ========== Hero: mobile narrow ========== */
+@media (max-width: 480px) {
+  .hero {
+    min-height: 380px;
+    padding: var(--space-48) var(--space-16);
+  }
+
+  .hero-inner {
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.5rem, 8vw, 1.875rem);
+    margin-bottom: var(--space-12);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: var(--space-24);
+    max-width: none;
+  }
+
+  .hero-trust {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: var(--space-24);
+    gap: var(--space-8);
+  }
+
+  .hero-chip {
+    padding: var(--space-8) var(--space-12);
+    font-size: 0.6875rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-12);
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 /* Quick Info — premium floating card; desktop only, no overlap on mobile */
